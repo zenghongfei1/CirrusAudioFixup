@@ -106,7 +106,10 @@ inline constexpr BoardProperties kBoardProperties[] = {
     {0x17aa38b7, 2, false, {0, 1, 0, 0}, 0, 1, -1, 0, 0, 0},
     {0x17aa38c7, 4, true, {1, 0, 1, 0}, 0, 2, -1, 1000, 4500, 24},
     {0x17aa38c8, 4, true, {1, 0, 1, 0}, 0, 2, -1, 1000, 4500, 24},
-    {0x17aa38f9, 2, false, {1, 0, 0, 0}, 0, 2, -1, 0, 0, 0},
+    // Lenovo ThinkBook 16p G5 IRX (21N5): Intel platform, no Intel GPIO support in
+    // this driver. Reset and speaker-ID GPIO resources are unreachable, so both are
+    // disabled and the generic (speaker-ID-less) firmware entry is used instead.
+    {0x17aa38f9, 2, false, {1, 0, 0, 0}, -1, -1, -1, 0, 0, 0},
     {0x17aa38fa, 2, false, {1, 0, 0, 0}, 0, 2, -1, 0, 0, 0},
 };
 inline const BoardProperties* boardProperties(uint16_t vendor, uint16_t device) {
